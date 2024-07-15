@@ -2,6 +2,8 @@ import { bikeData } from "@/lib/data";
 
 const numbers = [7, 5, 6, 7, 3, 2];
 
+const parts = bikeData.parts;
+
 export default function Home() {
   return (
     <>
