@@ -1,0 +1,5 @@
+{
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "nixEnvSelector.nixFile": "${workspaceFolder}/shell.nix",
+  "editor.formatOnSave": true,
+}
