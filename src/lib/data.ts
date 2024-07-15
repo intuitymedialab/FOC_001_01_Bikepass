@@ -3,7 +3,9 @@ import { Bikedata } from "./types/domain";
 export const bikeData: Bikedata = {
   bike: {
     manufacturer: "Focus",
+    bikeModel: "Jam3",
     serialNumber: "89aisjdlfkasjdf",
+    imagePath: "src/assets/Jam-Small.png",
   },
   parts: [
     {

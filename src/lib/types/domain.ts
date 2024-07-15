@@ -9,7 +9,9 @@ export type Part = {
 export type Bikedata = {
   bike: {
     manufacturer: string;
+    bikeModel: string;
     serialNumber: string;
+    imagePath: string;
   };
   parts: Part[];
 };
