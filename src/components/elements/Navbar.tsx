@@ -4,7 +4,7 @@ import Image from "next/image";
 import logo from "@/assets/intuity_logo_weiss.svg";
 import { Button } from "../ui/button";
 
-interface NavbarProps {}
+interface NavbarProps { }
 
 const Navbar: FunctionComponent<NavbarProps> = ({
   className,
@@ -15,7 +15,7 @@ const Navbar: FunctionComponent<NavbarProps> = ({
       className={cn(
         "flex flex-row w-full border-b border-b-border p-4 bg-secondary text-secondary-foreground items-center space-x-4 lg:space-x-6 justify-around",
         className,
-      )}
+      )
       {...props}>
       <a
         href="https://www.intuity.de/"

@@ -1,4 +1,10 @@
-import { bikeData } from "@/lib/data";
+import { bikeData, componentType } from "@/lib/data";
+import { AlignCenter, AlignJustify } from "lucide-react";
+import Image from "next/image";
+import icon from "@/assets/Bike Shop Icons [Converted]-02.svg";
+import hero from "@/assets/Jam-Small.png";
+import Link from 'next/link';
+
 
 
 export default function Home() {
@@ -8,59 +14,53 @@ export default function Home() {
         <h1
           style={{
             fontSize: 50,
-            fontStyle: "black",
             color: "black",
             textAlign: "left"
-          }}>
+
+          }} className="font-bold">
           {bikeData.bike.manufacturer} {bikeData.bike.bikeModel}
         </h1>
       </div>
 
-      <div key={bikeData.bike.imagePath}>
-        <img src={bikeData.bike.imagePath} alt="BikeImage" />
+      <div style={{ verticalAlign: "middle" }} className="flex flex-col items-center justify-center mt-5 mb-15">
+        <Image src={hero} width="300" height="171" alt="BikeImage" />
       </div>
 
       <div
         style={{
           backgroundColor: "white",
-          border: "1px solid yellow",
+          marginTop: "20px",
+          marginBottom: "80px"
         }}
 
       /* className="flex flex-col items-center justify-center p-24 relative h-full bg-center bg-cover bg-no-repeat bg-opacity-50" */
       >
-        <h2>Bike Komponenten</h2>
+        <h2 className="font-bold">Bike Komponenten</h2>
 
         {bikeData.parts.map(part => (
           <div
             style={{
-              backgroundColor: "white",
-              marginTop: "5px",
-              padding: "5px",
+              marginTop: "8px",
+              padding: "12px",
               paddingLeft: "10px",
               border: "1px solid black",
-              color: "black",
-              textAlign: "left"
-            }}>
+            }} key={part.modelName} className="flex flex-row items-center justify-between text-white">
 
-            <div key={part.modelName}>
 
-              <p
-                style={{
-                  backgroundColor: "white",
-                  color: "black",
-                  padding: "1px",
-                  textAlign: "left",
-                  display: "inline-block"
-                }}>{part.modelName}</p>
-              <p
-                style={{
-                  backgroundColor: "white",
-                  color: "black",
-                  padding: "1px",
-                  textAlign: "right",
-                  display: "inline-block"
-                }}>→</p>
+            <div
+              style={{
+                padding: "1px",
+
+              }} className="text-black">
+              <Link href="src/app/details.tsx">{part.manufacturer} {part.modelName}</Link >
             </div>
+
+            <div
+              style={{
+                color: "black",
+                padding: "1px",
+
+              }} >→</div>
 
           </div>
         ))}
