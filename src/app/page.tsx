@@ -7,6 +7,8 @@ import Link from 'next/link';
 
 
 
+const parts = bikeData.parts;
+
 export default function Home() {
   return (
     <>
