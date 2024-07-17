@@ -13,7 +13,11 @@ export const bikes: Bikedata[] = [
       bikeModel: "CYCLO CROSS 9000",
       serialNumber: "89aisjdlfkasjdf",
       imagePath: "/bikeassets/Merida Fahrrad Details Spec .jpg",
-      id: "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5"
+      price: 3499,
+      color: "schwarz (signalrot)",
+      size: "XX",
+      year: 2016,
+      id: "838ece1033bf7c7468e873e79ba2a3ec"
     },
     parts: [
       {
@@ -21,6 +25,7 @@ export const bikes: Bikedata[] = [
         type: "fork",
         manufacturer: "Shimano",
         serialNumber: "N/A",
+        dateOfInstallation: "N/A",
         isStock: true,
       },
       {
@@ -28,6 +33,7 @@ export const bikes: Bikedata[] = [
         type: "brake",
         manufacturer: "SRAM",
         serialNumber: "N/A",
+        dateOfInstallation: "N/A",
         isStock: true,
       },
       {
@@ -35,6 +41,7 @@ export const bikes: Bikedata[] = [
         type: "shiftlever",
         manufacturer: "SRAM",
         serialNumber: "N/A",
+        dateOfInstallation: "N/A",
         isStock: true,
       },
       {
@@ -42,6 +49,7 @@ export const bikes: Bikedata[] = [
         type: "wheel",
         manufacturer: "Maxxis",
         serialNumber: "N/A",
+        dateOfInstallation: "N/A",
         isStock: true,
       },
       {
@@ -49,6 +57,7 @@ export const bikes: Bikedata[] = [
         type: "rim",
         manufacturer: "DT Swiss",
         serialNumber: "N/A",
+        dateOfInstallation: "N/A",
         isStock: true,
       },
       {
@@ -56,6 +65,7 @@ export const bikes: Bikedata[] = [
         type: "seat",
         manufacturer: "Prologo",
         serialNumber: "N/A",
+        dateOfInstallation: "N/A",
         isStock: true,
       },
       {
@@ -63,6 +73,7 @@ export const bikes: Bikedata[] = [
         type: "seatpost",
         manufacturer: "Merida",
         serialNumber: "N/A",
+        dateOfInstallation: "N/A",
         isStock: true,
       },
       {
@@ -70,6 +81,7 @@ export const bikes: Bikedata[] = [
         type: "seatclamp",
         manufacturer: "Merida",
         serialNumber: "N/A",
+        dateOfInstallation: "N/A",
         isStock: true,
       },
       {
@@ -77,6 +89,7 @@ export const bikes: Bikedata[] = [
         type: "handlebar",
         manufacturer: "Merida",
         serialNumber: "N/A",
+        dateOfInstallation: "N/A",
         isStock: true,
       },
       {
@@ -84,6 +97,7 @@ export const bikes: Bikedata[] = [
         type: "stem",
         manufacturer: "Merida",
         serialNumber: "N/A",
+        dateOfInstallation: "N/A",
         isStock: true,
       },
       {
@@ -91,6 +105,7 @@ export const bikes: Bikedata[] = [
         type: "grip",
         manufacturer: "Merida",
         serialNumber: "N/A",
+        dateOfInstallation: "N/A",
         isStock: true,
       },
       {
@@ -98,6 +113,7 @@ export const bikes: Bikedata[] = [
         type: "headset",
         manufacturer: "FSA",
         serialNumber: "N/A",
+        dateOfInstallation: "N/A",
         isStock: true,
       },
       {
@@ -105,6 +121,7 @@ export const bikes: Bikedata[] = [
         type: "brakelever",
         manufacturer: "SRAM",
         serialNumber: "N/A",
+        dateOfInstallation: "N/A",
         isStock: true,
       },
       {
@@ -112,6 +129,7 @@ export const bikes: Bikedata[] = [
         type: "bottombracket",
         manufacturer: "SRAM",
         serialNumber: "N/A",
+        dateOfInstallation: "N/A",
         isStock: true,
       },
       {
@@ -119,6 +137,7 @@ export const bikes: Bikedata[] = [
         type: "crankset",
         manufacturer: "SRAM",
         serialNumber: "N/A",
+        dateOfInstallation: "N/A",
         isStock: true,
       },
       {
@@ -126,6 +145,7 @@ export const bikes: Bikedata[] = [
         type: "sprockets",
         manufacturer: "Shimano",
         serialNumber: "N/A",
+        dateOfInstallation: "N/A",
         isStock: true,
       },
       {
@@ -133,6 +153,7 @@ export const bikes: Bikedata[] = [
         type: "chain",
         manufacturer: "KMC",
         serialNumber: "N/A",
+        dateOfInstallation: "N/A",
         isStock: true,
       },
 
@@ -143,14 +164,19 @@ export const bikes: Bikedata[] = [
       manufacturer: "Focus",
       bikeModel: "Jam2",
       serialNumber: "89aisjdlfkasjdf",
-      imagePath: "/public/bikeassets/Jam-Small.png",
-      id: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      imagePath: "/bikeassets/Focus-Jam2.png",
+      price: 8999,
+      color: "silver",
+      size: "XX",
+      year: 2024,
+      id: "4243391df87e703d511b43df2552ee6b"
     },
     parts: [{
       modelName: "CC Carbon Disk 15",
       type: "fork",
       manufacturer: "Shimano",
       serialNumber: "N/A",
+      dateOfInstallation: "N/A",
       isStock: true,
     },
     {
@@ -158,6 +184,7 @@ export const bikes: Bikedata[] = [
       type: "brake",
       manufacturer: "SRAM",
       serialNumber: "N/A",
+      dateOfInstallation: "N/A",
       isStock: true,
     },
     {
@@ -165,6 +192,7 @@ export const bikes: Bikedata[] = [
       type: "shiftlever",
       manufacturer: "SRAM",
       serialNumber: "N/A",
+      dateOfInstallation: "N/A",
       isStock: true,
     },
     {
@@ -172,6 +200,7 @@ export const bikes: Bikedata[] = [
       type: "wheel",
       manufacturer: "Maxxis",
       serialNumber: "N/A",
+      dateOfInstallation: "N/A",
       isStock: true,
     },
     {
@@ -179,6 +208,7 @@ export const bikes: Bikedata[] = [
       type: "rim",
       manufacturer: "DT Swiss",
       serialNumber: "N/A",
+      dateOfInstallation: "N/A",
       isStock: true,
     },
     {
@@ -186,6 +216,7 @@ export const bikes: Bikedata[] = [
       type: "seat",
       manufacturer: "Prologo",
       serialNumber: "N/A",
+      dateOfInstallation: "N/A",
       isStock: true,
     },
     {
@@ -193,6 +224,7 @@ export const bikes: Bikedata[] = [
       type: "seatpost",
       manufacturer: "Merida",
       serialNumber: "N/A",
+      dateOfInstallation: "N/A",
       isStock: true,
     },
     {
@@ -200,6 +232,7 @@ export const bikes: Bikedata[] = [
       type: "seatclamp",
       manufacturer: "Merida",
       serialNumber: "N/A",
+      dateOfInstallation: "N/A",
       isStock: true,
     },
     {
@@ -207,6 +240,7 @@ export const bikes: Bikedata[] = [
       type: "handlebar",
       manufacturer: "Merida",
       serialNumber: "N/A",
+      dateOfInstallation: "N/A",
       isStock: true,
     },
     {
@@ -214,6 +248,7 @@ export const bikes: Bikedata[] = [
       type: "stem",
       manufacturer: "Merida",
       serialNumber: "N/A",
+      dateOfInstallation: "N/A",
       isStock: true,
     },
     {
@@ -221,6 +256,7 @@ export const bikes: Bikedata[] = [
       type: "grip",
       manufacturer: "Merida",
       serialNumber: "N/A",
+      dateOfInstallation: "N/A",
       isStock: true,
     },
     {
@@ -228,6 +264,7 @@ export const bikes: Bikedata[] = [
       type: "headset",
       manufacturer: "FSA",
       serialNumber: "N/A",
+      dateOfInstallation: "N/A",
       isStock: true,
     },
     {
@@ -235,6 +272,7 @@ export const bikes: Bikedata[] = [
       type: "brakelever",
       manufacturer: "SRAM",
       serialNumber: "N/A",
+      dateOfInstallation: "N/A",
       isStock: true,
     },
     {
@@ -242,6 +280,7 @@ export const bikes: Bikedata[] = [
       type: "bottombracket",
       manufacturer: "SRAM",
       serialNumber: "N/A",
+      dateOfInstallation: "N/A",
       isStock: true,
     },
     {
@@ -249,6 +288,7 @@ export const bikes: Bikedata[] = [
       type: "crankset",
       manufacturer: "SRAM",
       serialNumber: "N/A",
+      dateOfInstallation: "N/A",
       isStock: true,
     },
     {
@@ -256,6 +296,7 @@ export const bikes: Bikedata[] = [
       type: "sprockets",
       manufacturer: "Shimano",
       serialNumber: "N/A",
+      dateOfInstallation: "N/A",
       isStock: true,
     },
     {
@@ -263,92 +304,154 @@ export const bikes: Bikedata[] = [
       type: "chain",
       manufacturer: "KMC",
       serialNumber: "N/A",
+      dateOfInstallation: "N/A",
       isStock: true,
     },
+    ]
+  }, {
+    bike: {
+      manufacturer: "ROSE",
+      bikeModel: "Backroad AL GRX 610 1x12",
+      serialNumber: "89aisjdlfkasjdf",
+      imagePath: "/bikeassets/Rose-Backroad-AL-GRX-610-1x12.png",
+      price: 2499,
+      color: "roasted olive",
+      size: "53",
+      year: 2024,
+      id: "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    parts: [
+      {
+        modelName: 'Cross Backroad, Carbon 28"',
+        type: "fork",
+        manufacturer: "ROSE",
+        serialNumber: "N/A",
+        dateOfInstallation: "N/A",
+        isStock: true,
+      },
+      {
+        modelName: "GRX, ST-RX610 / BR-RX410, schwarz 1700mm",
+        type: "shiftlever",
+        manufacturer: "Shimano",
+        serialNumber: "N/A",
+        dateOfInstallation: "N/A",
+        isStock: true,
+      },
+      {
+        modelName: "Terra Trail ProTection, Black / Transparent 40-584",
+        type: "wheel",
+        manufacturer: "Continental",
+        serialNumber: "N/A",
+        dateOfInstallation: "N/A",
+        isStock: true,
+      },
+      {
+        modelName: 'G25, 27,5"',
+        type: "rim",
+        manufacturer: "ROSE",
+        serialNumber: "N/A",
+        dateOfInstallation: "N/A",
+        isStock: true,
+      },
+      {
+        modelName: "Edition by Selle Italia, schwarz",
+        type: "seat",
+        manufacturer: "ROSE",
+        serialNumber: "N/A",
+        dateOfInstallation: "N/A",
+        isStock: true,
+      },
+      {
+        modelName: "WTB, 350mm, schwarz 27,2mm",
+        type: "seatpost",
+        manufacturer: "Ritchey",
+        serialNumber: "N/A",
+        dateOfInstallation: "N/A",
+        isStock: true,
+      },
+      {
+        modelName: "",
+        type: "seatclamp",
+        manufacturer: "ROSE",
+        serialNumber: "N/A",
+        dateOfInstallation: "N/A",
+        isStock: true,
+      },
+      {
+        modelName: "Venture Max Comp, schwarz 40cm",
+        type: "handlebar",
+        manufacturer: "ROSE",
+        serialNumber: "N/A",
+        dateOfInstallation: "N/A",
+        isStock: true,
+      },
+      {
+        modelName: "ALR, schwarz sand 70mm",
+        type: "stem",
+        manufacturer: "ROSE",
+        serialNumber: "N/A",
+        dateOfInstallation: "N/A",
+        isStock: true,
+      },
+      {
+        modelName: "Gel-Comfort, schwarz",
+        type: "ROSE",
+        manufacturer: "Merida",
+        serialNumber: "N/A",
+        dateOfInstallation: "N/A",
+        isStock: true,
+      },
+      {
+        modelName: "",
+        type: "headset",
+        manufacturer: "",
+        serialNumber: "N/A",
+        dateOfInstallation: "N/A",
+        isStock: true,
+      },
+      {
+        modelName: "GRX, BL-RX610-L / BR-RX410 1000mm",
+        type: "brakelever",
+        manufacturer: "Shimano",
+        serialNumber: "N/A",
+        dateOfInstallation: "N/A",
+        isStock: true,
+      },
+      {
+        modelName: "",
+        type: "bottombracket",
+        manufacturer: "",
+        serialNumber: "N/A",
+        dateOfInstallation: "N/A",
+        isStock: true,
+      },
+      {
+        modelName: "FC-RX610-1, 40Z, 170mm",
+        type: "crankset",
+        manufacturer: "Shimano",
+        serialNumber: "N/A",
+        dateOfInstallation: "N/A",
+        isStock: true,
+      },
+      {
+        modelName: "SLX, CS-M7100-12, 12-fach, 10-51",
+        type: "sprockets",
+        manufacturer: "Shimano",
+        serialNumber: "N/A",
+        dateOfInstallation: "N/A",
+        isStock: true,
+      },
+      {
+        modelName: "Deore CN-M6100, Quick Link, 12-fach 122gl.",
+        type: "chain",
+        manufacturer: "Shimano",
+        serialNumber: "N/A",
+        dateOfInstallation: "N/A",
+        isStock: true,
+      },
+
     ]
   }
 ];
 
 
-
-export const bikeData: Bikedata = {
-  bike: {
-    manufacturer: "Focus",
-    bikeModel: "Jam3",
-    serialNumber: "89aisjdlfkasjdf",
-    imagePath: "/src/assets/Jam-Small.png",
-    id: "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5"
-  },
-  parts: [
-    {
-      modelName: "XT Disc Brake Calipers",
-      type: "brake",
-      manufacturer: "Shimano",
-      serialNumber: "XTR9120CALPR0001",
-      isStock: true,
-    },
-    {
-      modelName: "Float 36 Factory Fork",
-      type: "brake",
-      manufacturer: "Fox Racing Shox",
-      serialNumber: "F36FKT000012345",
-      isStock: true,
-    },
-    {
-      modelName: "Nobby Nic",
-      type: "brake",
-      manufacturer: "Schwalbe",
-      serialNumber: "8asdfkajsdlfjasd",
-      isStock: true,
-    },
-    {
-      modelName: "XT Drivetrain",
-      type: "brake",
-      manufacturer: "Shimano",
-      serialNumber: "XTDRN0987654321",
-      isStock: true,
-    },
-    {
-      modelName: "Performance Line CX Motor",
-      type: "brake",
-      manufacturer: "Bosch",
-      serialNumber: "BSCHCX0123456789",
-      isStock: true,
-    },
-    {
-      modelName: "XM 1501 Wheelset",
-      type: "brake",
-      manufacturer: "DT Swiss",
-      serialNumber: "XM1501WS12345678",
-      isStock: true,
-    },
-    {
-      modelName: "GE1 Grips",
-      type: "brake",
-      manufacturer: "Ergon",
-      serialNumber: "ERGGE10000000001",
-      isStock: true,
-    },
-    {
-      modelName: "Fatbar Lite Handlebar",
-      type: "brake",
-      manufacturer: "Renthal",
-      serialNumber: "RNTFBL00000000XY",
-      isStock: true,
-    },
-    {
-      modelName: "XT Pedals",
-      type: "brake",
-      manufacturer: "Shimano",
-      serialNumber: "XTPD98765432109",
-      isStock: true,
-    },
-    {
-      modelName: "Reverb Stealth Dropper Post",
-      type: "brake",
-      manufacturer: "Rockshox",
-      serialNumber: "RSRVBSTH00000001",
-      isStock: true,
-    },
-  ],
-};

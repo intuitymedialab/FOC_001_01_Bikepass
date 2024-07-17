@@ -7,6 +7,7 @@ export type Part = {
   modelName: string;
   manufacturer: string;
   serialNumber: string;
+  dateOfInstallation: string;
   type: string;
   isStock: boolean;
 };
@@ -16,6 +17,10 @@ export type Bike = {
   bikeModel: string;
   serialNumber: string;
   imagePath: string;
+  price: number;
+  color: string;
+  size: string;
+  year: number;
   id: string;
 }
 
