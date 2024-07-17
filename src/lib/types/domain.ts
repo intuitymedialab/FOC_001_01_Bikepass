@@ -6,21 +6,23 @@ export type Componenttype = {
 export type Part = {
   modelName: string;
   manufacturer: string;
-  serialNumber: string;
-  dateOfInstallation: string;
+  serialNumber?: string;
+  dateOfInstallation?: string;
   type: string;
-  isStock: boolean;
+  isStock?: boolean;
+  material?: string;
 };
 
 export type Bike = {
   manufacturer: string;
   bikeModel: string;
-  serialNumber: string;
+  serialNumber?: string;
   imagePath: string;
-  price: number;
-  color: string;
-  size: string;
-  year: number;
+  price?: number;
+  color?: string;
+  size?: string;
+  year?: number;
+  manualLink?: string;
   id: string;
 }
 
