@@ -16,7 +16,7 @@ export default function Bike({ params }: { params: { bikeid: string } }) {
       <div key={currentBike.bike.manufacturer}>
         <h1
           style={{
-            fontSize: 50,
+            fontSize: 40,
             color: "black",
             textAlign: "left"
 
@@ -38,6 +38,23 @@ export default function Bike({ params }: { params: { bikeid: string } }) {
 
       /* className="flex flex-col items-center justify-center p-24 relative h-full bg-center bg-cover bg-no-repeat bg-opacity-50" */
       >
+
+        <h2 className="font-bold">Bike</h2>
+        <div style={{
+          marginTop: "8px",
+          marginBottom: "30px",
+          padding: "12px",
+          paddingLeft: "10px",
+          border: "1px solid black",
+        }}>
+          <p className="">Hersteller: {currentBike.bike.manufacturer}</p>
+          <p className="">Rahmennummer: {currentBike.bike.serialNumber}</p>
+          <p className="">Farbe: {currentBike.bike.color}</p>
+          <p className="">Baujahr: {currentBike.bike.year}</p>
+          <p className="">Preis: {currentBike.bike.price}€</p>
+          <a className="text-blue-800" href={currentBike.bike.manualLink}>Anleitung</a>
+        </div>
+
         <h2 className="font-bold">Bike Komponenten</h2>
 
         {currentBike.parts.map(part => (
@@ -57,7 +74,7 @@ export default function Bike({ params }: { params: { bikeid: string } }) {
                 padding: "1px",
 
               }} className="text-black">
-              <Link href={`/bike/${2}/part/${part.modelName}`}>{part.manufacturer} {part.modelName}</Link >
+              <Link href={`/bike/${currentBike.bike.id}/part/${part.partid}`}>{`${part.type} | ${part.manufacturer} ${part.modelName} `} </Link >
             </div>
 
             <div

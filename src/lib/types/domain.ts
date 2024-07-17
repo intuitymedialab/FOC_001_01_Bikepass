@@ -6,6 +6,7 @@ export type Componenttype = {
 export type Part = {
   modelName: string;
   manufacturer: string;
+  partid: string;
   serialNumber?: string;
   dateOfInstallation?: string;
   type: string;
