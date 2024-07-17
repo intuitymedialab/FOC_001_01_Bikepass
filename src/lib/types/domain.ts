@@ -11,15 +11,17 @@ export type Part = {
   isStock: boolean;
 };
 
-
+export type Bike = {
+  manufacturer: string;
+  bikeModel: string;
+  serialNumber: string;
+  imagePath: string;
+  id: string;
+}
 
 export type Bikedata = {
-  bike: {
-    manufacturer: string;
-    bikeModel: string;
-    serialNumber: string;
-    imagePath: string;
-    id: string;
-  };
+  bike: Bike;
   parts: Part[];
 };
+
+
