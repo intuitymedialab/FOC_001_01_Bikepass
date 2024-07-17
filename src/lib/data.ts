@@ -12,7 +12,7 @@ export const bikes: Bikedata[] = [
       manufacturer: "Merida",
       bikeModel: "CYCLO CROSS 9000",
       serialNumber: "89aisjdlfkasjdf",
-      imagePath: "/bikeassets/Merida Fahrrad Details Spec .jpg",
+      imagePath: "/bikeassets/Merida_Cyclo_Cross_9000.jpg",
       price: 3499,
       color: "schwarz (signalrot)",
       size: "XX",
