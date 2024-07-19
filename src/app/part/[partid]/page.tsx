@@ -4,7 +4,7 @@ import { createClient } from "@supabase/supabase-js";
 import { Database } from "@/lib/supabase";
 import { Button } from "@/components/ui/button";
 import React from "react";
-import { updateNote } from "@/app/actions";
+import { updatePartNote } from "@/app/actions";
 
 const supabaseUrl = process.env.SUPABASE_URL!;
 const supabaseKey = process.env.SUPABASE_SERVICE_KEY!;
@@ -60,7 +60,7 @@ export default async function Details({
       <p>Notizen: {currentPart.stockparts.notes}</p>
       <h2 className="font-bold mt-5">Eigene Notizen</h2>
 
-      <form action={updateNote}>
+      <form action={updatePartNote}>
         <Textarea
           name="custom_note"
           defaultValue={currentPart.custom_notes ?? ""}

@@ -13,11 +13,23 @@ if (!supabaseUrl || !supabaseKey) {
 
 const supabase = createClient<Database>(supabaseUrl, supabaseKey);
 
-export async function updateNote(formData: FormData) {
+export async function updatePartNote(formData: FormData) {
   const value = formData.get("custom_note") as string;
   const id = formData.get("partid") as string;
 
   await supabase.from("parts").update({ custom_notes: value }).eq("uuid", id);
 
   revalidatePath(`/part/${id}`);
+}
+
+export async function updateBikeNote(formData: FormData) {
+  const value = formData.get("custom_note") as string;
+  const id = formData.get("bikeid") as string;
+
+  await supabase
+    .from("bikes")
+    .update({ custom_notes: value })
+    .eq("bike_id", id);
+
+  revalidatePath(`/bike/${id}`);
 }

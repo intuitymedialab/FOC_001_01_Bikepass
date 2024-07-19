@@ -2,6 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { createClient } from "@supabase/supabase-js";
 import { Database } from "@/lib/supabase";
+import { Textarea } from "@/components/ui/textarea";
+import { updateBikeNote } from "@/app/actions";
+import { Button } from "@/components/ui/button";
 
 const supabaseUrl = process.env.SUPABASE_URL!;
 const supabaseKey = process.env.SUPABASE_SERVICE_KEY!;
@@ -16,7 +19,7 @@ export default async function Bike({ params }: { params: { bikeid: string } }) {
   let { data: currentBike, error: errorBike } = await supabase
     .from("bikes")
     .select(
-      "id, image_path, bike_id, price_in_eur, frame_number, frame_color ,notes, size, construction_year, stockbikes (brand, model, manual_URL), parts(uuid, stockpart_uuid, is_Stock, custom_notes, stockparts (brand, parttype, material, model))",
+      "id, image_path, bike_id, price_in_eur, frame_number, frame_color ,custom_notes, size, construction_year, stockbikes (brand, model, manual_URL), parts(uuid, stockpart_uuid, is_Stock, custom_notes, stockparts (brand, parttype, material, model))",
     )
     .eq("bike_id", params.bikeid)
     .single();
@@ -80,6 +83,21 @@ export default async function Bike({ params }: { params: { bikeid: string } }) {
             </div>
           ))}
       </div>
+
+      <h2 className="font-bold mt-5">Eigene Notizen</h2>
+
+      <form action={updateBikeNote}>
+        <Textarea
+          name="custom_note"
+          defaultValue={currentBike.custom_notes ?? ""}
+        />
+
+        <input type="hidden" value={params.bikeid} name="bikeid"></input>
+
+        <Button className="space-x-4 mt-2" type="submit">
+          <span>→{"   "}Save</span>
+        </Button>
+      </form>
     </>
   );
 }
