@@ -38,7 +38,7 @@ export default async function Bike({ params }: { params: { bikeid: string } }) {
 
       <div
         style={{ verticalAlign: "middle" }}
-        className="flex flex-col items-center justify-center mt-5 mb-15">
+        className="flex flex-col items-center justify-center mt-5 mb-6">
         <Image
           src={currentBike.image_path ?? ""}
           width={300}
@@ -47,16 +47,26 @@ export default async function Bike({ params }: { params: { bikeid: string } }) {
         />
       </div>
 
-      <div className="mt-11 mb-24">
+      <div className="mt-11 mb-9">
         <h2 className="font-bold">Bike</h2>
         <div className="mt-2 mb-11 p-4 pl-4 border border-black">
           <p className="">Hersteller: {currentBike.stockbikes.brand}</p>
           <p className="">Modell: {currentBike.stockbikes.model}</p>
-          <p className="">Rahmennummer: {currentBike.frame_number}</p>
-          <p className="">Rahmengröße: {currentBike.size}</p>
-          <p className="">Farbe: {currentBike.frame_color}</p>
-          <p className="">Baujahr: {currentBike.construction_year}</p>
-          <p className="">Preis: {currentBike.price_in_eur}€</p>
+          {currentBike.frame_number && (
+            <p className="">Rahmennummer: {currentBike.frame_number}</p>
+          )}
+          {currentBike.size && (
+            <p className="">Rahmengröße: {currentBike.size}</p>
+          )}
+          {currentBike.frame_color && (
+            <p className="">Farbe: {currentBike.frame_color}</p>
+          )}
+          {currentBike.construction_year && (
+            <p className="">Baujahr: {currentBike.construction_year}</p>
+          )}
+          {currentBike.price_in_eur && (
+            <p className="">Preis: {currentBike.price_in_eur}€</p>
+          )}
           {currentBike.stockbikes.manual_URL && (
             <a
               className="text-blue-800"
@@ -86,18 +96,20 @@ export default async function Bike({ params }: { params: { bikeid: string } }) {
 
       <h2 className="font-bold mt-5">Eigene Notizen</h2>
 
-      <form action={updateBikeNote}>
-        <Textarea
-          name="custom_note"
-          defaultValue={currentBike.custom_notes ?? ""}
-        />
+      <div className="mt-2 mb-24">
+        <form action={updateBikeNote}>
+          <Textarea
+            name="custom_note"
+            defaultValue={currentBike.custom_notes ?? ""}
+          />
 
-        <input type="hidden" value={params.bikeid} name="bikeid"></input>
+          <input type="hidden" value={params.bikeid} name="bikeid"></input>
 
-        <Button className="space-x-4 mt-2" type="submit">
-          <span>→{"   "}Save</span>
-        </Button>
-      </form>
+          <Button className="space-x-4 mt-2" type="submit">
+            <span>→{"   "}Save</span>
+          </Button>
+        </form>
+      </div>
     </>
   );
 }

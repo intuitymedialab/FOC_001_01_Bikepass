@@ -28,6 +28,32 @@ export default async function Details({
     .eq("uuid", params.partid)
     .single();
 
+  //   function editPartForm(currentPart: {
+  //     stockparts: { brand: any; model: any };
+  //   }) {
+  //     return (
+  //       <>
+  //         <form action={updatePartName}>
+  //           <Textarea
+  //             name="editBrand"
+  //             defaultValue={currentPart.stockparts.brand ?? ""}
+  //           />
+
+  //           <Textarea
+  //             name="editModel"
+  //             defaultValue={currentPart.stockparts.model ?? ""}
+  //           />
+
+  //           <input type="hidden" value={params.partid} name="partid"></input>
+
+  //           <Button className="space-x-4 mt-2" type="submit">
+  //             <span>→{"   "}Save</span>
+  //           </Button>
+  //         </form>
+  //       </>
+  //     );
+  //   }
+
   if (errorPart || !currentPart || !currentPart.stockparts) {
     return <h1>No Part with this ID</h1>;
   }
@@ -37,6 +63,9 @@ export default async function Details({
       <h1 className="text-4xl text-black font-bold mb-9">
         {currentPart.stockparts.parttype} | {currentPart.stockparts.brand}{" "}
         {currentPart.stockparts.model}
+        <Button className="space-x-4 mt-2" variant="link" type="submit">
+          <span>→{"   "}Edit Part</span>
+        </Button>
       </h1>
 
       {currentPart.stockparts.image_path && (
@@ -53,25 +82,33 @@ export default async function Details({
       )}
 
       <p>Originalteil: {currentPart.is_Stock ? "Ja" : "Nein"}</p>
-      <p>
-        Zusatzinformationen:{" "}
-        {JSON.stringify(currentPart.stockparts.additional_info)}
-      </p>
-      <p>Notizen: {currentPart.stockparts.notes}</p>
+
+      {currentPart.stockparts.additional_info && (
+        <p>
+          Zusatzinformationen:{" "}
+          {JSON.stringify(currentPart.stockparts.additional_info)}
+        </p>
+      )}
+
+      {currentPart.stockparts.notes && (
+        <p>Notizen: {currentPart.stockparts.notes}</p>
+      )}
+
       <h2 className="font-bold mt-5">Eigene Notizen</h2>
+      <div className="mt-2 mb-24">
+        <form action={updatePartNote}>
+          <Textarea
+            name="custom_note"
+            defaultValue={currentPart.custom_notes ?? ""}
+          />
 
-      <form action={updatePartNote}>
-        <Textarea
-          name="custom_note"
-          defaultValue={currentPart.custom_notes ?? ""}
-        />
+          <input type="hidden" value={params.partid} name="partid"></input>
 
-        <input type="hidden" value={params.partid} name="partid"></input>
-
-        <Button className="space-x-4 mt-2" type="submit">
-          <span>→{"   "}Save</span>
-        </Button>
-      </form>
+          <Button className="space-x-4 mt-2" type="submit">
+            <span>→{"   "}Save</span>
+          </Button>
+        </form>
+      </div>
     </>
   );
 }

@@ -33,3 +33,19 @@ export async function updateBikeNote(formData: FormData) {
 
   revalidatePath(`/bike/${id}`);
 }
+
+// export async function updatePartName(formData: FormData) {
+//   const brandEdit = formData.get("brand") as string;
+//   const modelEdit = formData.get("model") as string;
+//   const id = formData.get("partid") as string;
+
+//   await supabase
+//     .from("stockparts")
+//     .update({
+//       brand: brandEdit,
+//       model: modelEdit,
+//     })
+//     .eq("bike_id", id);
+
+//   revalidatePath(`/bike/${id}`);
+// }
