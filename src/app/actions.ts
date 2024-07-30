@@ -3,6 +3,8 @@
 import { Database } from "@/lib/supabase";
 import { createClient } from "@supabase/supabase-js";
 import { revalidatePath } from "next/cache";
+import { randomUUID } from "crypto";
+import { redirect } from "next/navigation";
 
 const supabaseUrl = process.env.SUPABASE_URL!;
 const supabaseKey = process.env.SUPABASE_SERVICE_KEY!;
@@ -13,39 +15,79 @@ if (!supabaseUrl || !supabaseKey) {
 
 const supabase = createClient<Database>(supabaseUrl, supabaseKey);
 
-export async function updatePartNote(formData: FormData) {
-  const value = formData.get("custom_note") as string;
-  const id = formData.get("partid") as string;
+export async function updateName(
+  name: string,
+  isComponent: boolean,
+  id: string,
+) {
+  if (isComponent) {
+    await supabase.from("part").update({ partname: name }).eq("partuuid", id);
 
-  await supabase.from("parts").update({ custom_notes: value }).eq("uuid", id);
+    revalidatePath(`/part/${id}`);
+  } else {
+    await supabase.from("bike").update({ bikename: name }).eq("bikeuuid", id);
+
+    revalidatePath(`/bike/${id}`);
+  }
+}
+
+export async function updateComponentType(title: string, id: string) {
+  await supabase.from("part").update({ parttype: title }).eq("partuuid", id);
 
   revalidatePath(`/part/${id}`);
 }
 
-export async function updateBikeNote(formData: FormData) {
-  const value = formData.get("custom_note") as string;
-  const id = formData.get("bikeid") as string;
+export async function updateNote(
+  note: string,
+  isComponent: boolean,
+  id: string,
+) {
+  if (isComponent) {
+    await supabase.from("part").update({ partnotes: note }).eq("partuuid", id);
 
-  await supabase
-    .from("bikes")
-    .update({ custom_notes: value })
-    .eq("bike_id", id);
+    revalidatePath(`/part/${id}`);
+  } else {
+    await supabase.from("bike").update({ bikenotes: note }).eq("bikeuuid", id);
 
-  revalidatePath(`/bike/${id}`);
+    revalidatePath(`/bike/${id}`);
+  }
 }
 
-// export async function updatePartName(formData: FormData) {
-//   const brandEdit = formData.get("brand") as string;
-//   const modelEdit = formData.get("model") as string;
-//   const id = formData.get("partid") as string;
+export async function insertComponent(bikeid: string) {
+  const uuid = randomUUID();
+  await supabase.from("part").insert([{ partuuid: uuid, refbikeuuid: bikeid }]);
+  return uuid;
+}
 
-//   await supabase
-//     .from("stockparts")
-//     .update({
-//       brand: brandEdit,
-//       model: modelEdit,
-//     })
-//     .eq("bike_id", id);
+export async function uploadImage(
+  image: string,
+  name: string,
+  contentType: string,
+  id: string,
+  isComponent: boolean,
+) {
+  const file = Buffer.from(image.replace(/data:.*?;base64,/, ""), "base64url");
+  await supabase.storage.from("bikepassImages").upload(`public/${name}`, file, {
+    contentType,
+  });
 
-//   revalidatePath(`/bike/${id}`);
-// }
+  let imagePath = `https://olxlvbczlprszofhhvaa.supabase.co/storage/v1/object/public/bikepassImages/public/${name}`;
+
+  const table = isComponent ? "part" : "bike";
+  const idName = isComponent ? "partuuid" : "bikeuuid";
+  const colName = isComponent ? "partimagepath" : "bikeimagepath";
+
+  // await supabase.from(table).update({ partimagepath }).eq(idName, id);
+  await supabase
+    .from(table)
+    .update({ [colName]: imagePath })
+    .eq(idName, id);
+
+  const redirectUrl = `/${table}/${id}`;
+
+  redirect(redirectUrl);
+}
+
+export async function deleteComponent(id: string) {
+  await supabase.from("part").delete().eq("partuuid", id);
+}

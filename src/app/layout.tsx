@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
-
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import Navbar from "@/components/elements/Navbar";
 import Head from "next/head";
 import { Netto } from "@/lib/nettoFont";
 
@@ -39,8 +37,7 @@ export default function RootLayout({
           Netto.variable,
           "font-netto",
         )}>
-        <Navbar />
-        <main className="overflow-auto h-full p-8">{children}</main>
+        <main className="overflow-auto h-full bg-neutral-100">{children}</main>
       </body>
     </html>
   );

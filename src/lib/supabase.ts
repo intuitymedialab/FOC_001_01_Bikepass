@@ -4,323 +4,86 @@ export type Json =
   | boolean
   | null
   | { [key: string]: Json | undefined }
-  | Json[];
+  | Json[]
 
 export type Database = {
   public: {
     Tables: {
-      bikes: {
+      bike: {
         Row: {
-          additional_info: string | null;
-          bike_id: string | null;
-          construction_year: number | null;
-          created_at: string;
-          custom_notes: string | null;
-          date_last_drivetrain_cleaning: string | null;
-          date_last_tyrepressure_check: string | null;
-          date_of_purchase: string | null;
-          frame_color: string | null;
-          frame_number: string | null;
-          id: number;
-          image_path: string | null;
-          owner_id: string | null;
-          parts: number[] | null;
-          parts_list: number[] | null;
-          price_in_eur: number | null;
-          serial_number: string | null;
-          size: string | null;
-          stockbike_id: string | null;
-        };
+          bikeimagepath: string | null
+          bikename: string | null
+          bikenotes: string | null
+          bikeuuid: string | null
+          created_at: string
+          id: number
+        }
         Insert: {
-          additional_info?: string | null;
-          bike_id?: string | null;
-          construction_year?: number | null;
-          created_at?: string;
-          custom_notes?: string | null;
-          date_last_drivetrain_cleaning?: string | null;
-          date_last_tyrepressure_check?: string | null;
-          date_of_purchase?: string | null;
-          frame_color?: string | null;
-          frame_number?: string | null;
-          id?: number;
-          image_path?: string | null;
-          owner_id?: string | null;
-          parts?: number[] | null;
-          parts_list?: number[] | null;
-          price_in_eur?: number | null;
-          serial_number?: string | null;
-          size?: string | null;
-          stockbike_id?: string | null;
-        };
+          bikeimagepath?: string | null
+          bikename?: string | null
+          bikenotes?: string | null
+          bikeuuid?: string | null
+          created_at?: string
+          id?: number
+        }
         Update: {
-          additional_info?: string | null;
-          bike_id?: string | null;
-          construction_year?: number | null;
-          created_at?: string;
-          custom_notes?: string | null;
-          date_last_drivetrain_cleaning?: string | null;
-          date_last_tyrepressure_check?: string | null;
-          date_of_purchase?: string | null;
-          frame_color?: string | null;
-          frame_number?: string | null;
-          id?: number;
-          image_path?: string | null;
-          owner_id?: string | null;
-          parts?: number[] | null;
-          parts_list?: number[] | null;
-          price_in_eur?: number | null;
-          serial_number?: string | null;
-          size?: string | null;
-          stockbike_id?: string | null;
-        };
+          bikeimagepath?: string | null
+          bikename?: string | null
+          bikenotes?: string | null
+          bikeuuid?: string | null
+          created_at?: string
+          id?: number
+        }
+        Relationships: []
+      }
+      part: {
+        Row: {
+          created_at: string
+          id: number
+          partimagepath: string | null
+          partname: string | null
+          partnotes: string | null
+          parttype: string | null
+          partuuid: string | null
+          refbikeuuid: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          partimagepath?: string | null
+          partname?: string | null
+          partnotes?: string | null
+          parttype?: string | null
+          partuuid?: string | null
+          refbikeuuid?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          partimagepath?: string | null
+          partname?: string | null
+          partnotes?: string | null
+          parttype?: string | null
+          partuuid?: string | null
+          refbikeuuid?: string | null
+        }
         Relationships: [
           {
-            foreignKeyName: "bikes_stockbike_id_fkey";
-            columns: ["stockbike_id"];
-            isOneToOne: false;
-            referencedRelation: "stockbikes";
-            referencedColumns: ["uuid"];
+            foreignKeyName: "part_refbikeuuid_fkey"
+            columns: ["refbikeuuid"]
+            isOneToOne: false
+            referencedRelation: "bike"
+            referencedColumns: ["bikeuuid"]
           },
-        ];
-      };
-      parts: {
-        Row: {
-          bike_uuid: string;
-          created_at: string;
-          custom_notes: string | null;
-          id: number;
-          is_Stock: boolean | null;
-          stockpart_uuid: string | null;
-          uuid: string | null;
-        };
-        Insert: {
-          bike_uuid: string;
-          created_at?: string;
-          custom_notes?: string | null;
-          id?: number;
-          is_Stock?: boolean | null;
-          stockpart_uuid?: string | null;
-          uuid?: string | null;
-        };
-        Update: {
-          bike_uuid?: string;
-          created_at?: string;
-          custom_notes?: string | null;
-          id?: number;
-          is_Stock?: boolean | null;
-          stockpart_uuid?: string | null;
-          uuid?: string | null;
-        };
-        Relationships: [
-          {
-            foreignKeyName: "parts_bike_uuid_fkey";
-            columns: ["bike_uuid"];
-            isOneToOne: false;
-            referencedRelation: "bikes";
-            referencedColumns: ["bike_id"];
-          },
-          {
-            foreignKeyName: "parts_stockpart_uuid_fkey";
-            columns: ["stockpart_uuid"];
-            isOneToOne: false;
-            referencedRelation: "stockparts";
-            referencedColumns: ["stockparts_uuid"];
-          },
-        ];
-      };
-      parts_backup: {
-        Row: {
-          bike_uuid: string | null;
-          created_at: string;
-          custom_notes: string | null;
-          id: number;
-          is_Stock: boolean | null;
-          stockpart_uuid: string | null;
-        };
-        Insert: {
-          bike_uuid?: string | null;
-          created_at?: string;
-          custom_notes?: string | null;
-          id?: number;
-          is_Stock?: boolean | null;
-          stockpart_uuid?: string | null;
-        };
-        Update: {
-          bike_uuid?: string | null;
-          created_at?: string;
-          custom_notes?: string | null;
-          id?: number;
-          is_Stock?: boolean | null;
-          stockpart_uuid?: string | null;
-        };
-        Relationships: [];
-      };
-      stockbikes: {
-        Row: {
-          brand: string;
-          created_at: string;
-          id: number;
-          manual_URL: string | null;
-          model: string;
-          uuid: string | null;
-        };
-        Insert: {
-          brand: string;
-          created_at?: string;
-          id?: number;
-          manual_URL?: string | null;
-          model: string;
-          uuid?: string | null;
-        };
-        Update: {
-          brand?: string;
-          created_at?: string;
-          id?: number;
-          manual_URL?: string | null;
-          model?: string;
-          uuid?: string | null;
-        };
-        Relationships: [];
-      };
-      stockparts: {
-        Row: {
-          additional_info: Json | null;
-          brand: string | null;
-          created_at: string;
-          id: number;
-          image_path: string | null;
-          manual_URL: string | null;
-          material: string | null;
-          model: string | null;
-          notes: string | null;
-          parttype: Database["public"]["Enums"]["part_type"] | null;
-          stockparts_uuid: string | null;
-        };
-        Insert: {
-          additional_info?: Json | null;
-          brand?: string | null;
-          created_at?: string;
-          id?: number;
-          image_path?: string | null;
-          manual_URL?: string | null;
-          material?: string | null;
-          model?: string | null;
-          notes?: string | null;
-          parttype?: Database["public"]["Enums"]["part_type"] | null;
-          stockparts_uuid?: string | null;
-        };
-        Update: {
-          additional_info?: Json | null;
-          brand?: string | null;
-          created_at?: string;
-          id?: number;
-          image_path?: string | null;
-          manual_URL?: string | null;
-          material?: string | null;
-          model?: string | null;
-          notes?: string | null;
-          parttype?: Database["public"]["Enums"]["part_type"] | null;
-          stockparts_uuid?: string | null;
-        };
-        Relationships: [];
-      };
-      stockparts_backup: {
-        Row: {
-          additional_info: Json | null;
-          bike_uuid: string | null;
-          brand: string | null;
-          created_at: string;
-          id: number;
-          image_path: string | null;
-          is_Stock: boolean | null;
-          manuel_URL: string | null;
-          material: string | null;
-          model: string | null;
-          Notes: string | null;
-          parttype: Database["public"]["Enums"]["part_type"] | null;
-          uuid: string | null;
-        };
-        Insert: {
-          additional_info?: Json | null;
-          bike_uuid?: string | null;
-          brand?: string | null;
-          created_at?: string;
-          id?: number;
-          image_path?: string | null;
-          is_Stock?: boolean | null;
-          manuel_URL?: string | null;
-          material?: string | null;
-          model?: string | null;
-          Notes?: string | null;
-          parttype?: Database["public"]["Enums"]["part_type"] | null;
-          uuid?: string | null;
-        };
-        Update: {
-          additional_info?: Json | null;
-          bike_uuid?: string | null;
-          brand?: string | null;
-          created_at?: string;
-          id?: number;
-          image_path?: string | null;
-          is_Stock?: boolean | null;
-          manuel_URL?: string | null;
-          material?: string | null;
-          model?: string | null;
-          Notes?: string | null;
-          parttype?: Database["public"]["Enums"]["part_type"] | null;
-          uuid?: string | null;
-        };
-        Relationships: [];
-      };
-      stockparts_duplicate: {
-        Row: {
-          additional_info: Json | null;
-          brand: string | null;
-          created_at: string;
-          id: number;
-          image_path: string | null;
-          manual_URL: string | null;
-          material: string | null;
-          model: string | null;
-          notes: string | null;
-          parttype: Database["public"]["Enums"]["part_type"] | null;
-          uuid: string | null;
-        };
-        Insert: {
-          additional_info?: Json | null;
-          brand?: string | null;
-          created_at?: string;
-          id?: number;
-          image_path?: string | null;
-          manual_URL?: string | null;
-          material?: string | null;
-          model?: string | null;
-          notes?: string | null;
-          parttype?: Database["public"]["Enums"]["part_type"] | null;
-          uuid?: string | null;
-        };
-        Update: {
-          additional_info?: Json | null;
-          brand?: string | null;
-          created_at?: string;
-          id?: number;
-          image_path?: string | null;
-          manual_URL?: string | null;
-          material?: string | null;
-          model?: string | null;
-          notes?: string | null;
-          parttype?: Database["public"]["Enums"]["part_type"] | null;
-          uuid?: string | null;
-        };
-        Relationships: [];
-      };
-    };
+        ]
+      }
+    }
     Views: {
-      [_ in never]: never;
-    };
+      [_ in never]: never
+    }
     Functions: {
-      [_ in never]: never;
-    };
+      [_ in never]: never
+    }
     Enums: {
       part_type:
         | "fork"
@@ -354,15 +117,15 @@ export type Database = {
         | "shift_lever"
         | "break_lever"
         | "shift_break_lever"
-        | "rear_tyre";
-    };
+        | "rear_tyre"
+    }
     CompositeTypes: {
-      [_ in never]: never;
-    };
-  };
-};
+      [_ in never]: never
+    }
+  }
+}
 
-type PublicSchema = Database[Extract<keyof Database, "public">];
+type PublicSchema = Database[Extract<keyof Database, "public">]
 
 export type Tables<
   PublicTableNameOrOptions extends
@@ -375,19 +138,19 @@ export type Tables<
 > = PublicTableNameOrOptions extends { schema: keyof Database }
   ? (Database[PublicTableNameOrOptions["schema"]]["Tables"] &
       Database[PublicTableNameOrOptions["schema"]]["Views"])[TableName] extends {
-      Row: infer R;
+      Row: infer R
     }
     ? R
     : never
   : PublicTableNameOrOptions extends keyof (PublicSchema["Tables"] &
-      PublicSchema["Views"])
-  ? (PublicSchema["Tables"] &
-      PublicSchema["Views"])[PublicTableNameOrOptions] extends {
-      Row: infer R;
-    }
-    ? R
+        PublicSchema["Views"])
+    ? (PublicSchema["Tables"] &
+        PublicSchema["Views"])[PublicTableNameOrOptions] extends {
+        Row: infer R
+      }
+      ? R
+      : never
     : never
-  : never;
 
 export type TablesInsert<
   PublicTableNameOrOptions extends
@@ -398,17 +161,17 @@ export type TablesInsert<
     : never = never,
 > = PublicTableNameOrOptions extends { schema: keyof Database }
   ? Database[PublicTableNameOrOptions["schema"]]["Tables"][TableName] extends {
-      Insert: infer I;
+      Insert: infer I
     }
     ? I
     : never
   : PublicTableNameOrOptions extends keyof PublicSchema["Tables"]
-  ? PublicSchema["Tables"][PublicTableNameOrOptions] extends {
-      Insert: infer I;
-    }
-    ? I
+    ? PublicSchema["Tables"][PublicTableNameOrOptions] extends {
+        Insert: infer I
+      }
+      ? I
+      : never
     : never
-  : never;
 
 export type TablesUpdate<
   PublicTableNameOrOptions extends
@@ -419,17 +182,17 @@ export type TablesUpdate<
     : never = never,
 > = PublicTableNameOrOptions extends { schema: keyof Database }
   ? Database[PublicTableNameOrOptions["schema"]]["Tables"][TableName] extends {
-      Update: infer U;
+      Update: infer U
     }
     ? U
     : never
   : PublicTableNameOrOptions extends keyof PublicSchema["Tables"]
-  ? PublicSchema["Tables"][PublicTableNameOrOptions] extends {
-      Update: infer U;
-    }
-    ? U
+    ? PublicSchema["Tables"][PublicTableNameOrOptions] extends {
+        Update: infer U
+      }
+      ? U
+      : never
     : never
-  : never;
 
 export type Enums<
   PublicEnumNameOrOptions extends
@@ -441,5 +204,5 @@ export type Enums<
 > = PublicEnumNameOrOptions extends { schema: keyof Database }
   ? Database[PublicEnumNameOrOptions["schema"]]["Enums"][EnumName]
   : PublicEnumNameOrOptions extends keyof PublicSchema["Enums"]
-  ? PublicSchema["Enums"][PublicEnumNameOrOptions]
-  : never;
+    ? PublicSchema["Enums"][PublicEnumNameOrOptions]
+    : never

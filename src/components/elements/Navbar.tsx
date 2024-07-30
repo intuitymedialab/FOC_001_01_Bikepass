@@ -4,7 +4,7 @@ import Image from "next/image";
 import logo from "@/assets/intuity_logo_weiss.svg";
 import { Button } from "../ui/button";
 
-interface NavbarProps { }
+interface NavbarProps {}
 
 const Navbar: FunctionComponent<NavbarProps> = ({
   className,

@@ -1,5 +1,8 @@
 import { createClient } from "@supabase/supabase-js";
 import { Database } from "@/lib/supabase";
+// import Image from "next/image";
+// import { Textarea } from "@/components/ui/textarea";
+// import { Button } from "@/components/ui/button";
 import { Header } from "@/components/elements/Header";
 import { Note } from "@/components/elements/Note";
 import { ImageUpload } from "@/components/elements/ImageUpoad";
@@ -24,6 +27,8 @@ export default async function Part({ params }: { params: { partid: string } }) {
     )
     .eq("partuuid", params.partid)
     .single();
+
+  // console.log(part);
 
   if (error || !part || !part.partuuid) {
     return <h1>No part with this ID</h1>;
