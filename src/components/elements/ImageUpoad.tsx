@@ -41,7 +41,12 @@ export function ImageUpload(props: {
   return (
     <>
       <form>
-        <Input ref={inputRef} type="file" hidden onChange={handleFileUpload} />
+        <Input
+          ref={inputRef}
+          type="file"
+          hidden={true}
+          onChange={handleFileUpload}
+        />
         <div className="flex flex-col items-center justify-center mb-6 mt-20">
           <button onClick={handleButtonClick}>
             <Image

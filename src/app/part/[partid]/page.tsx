@@ -31,7 +31,7 @@ export default async function Part({ params }: { params: { partid: string } }) {
 
   return (
     <>
-      <div className="w-screen h-screen bg-neutral-200">
+      <div className="w-screen ">
         <Header
           title={part.partname ?? "placeholder name"}
           subtitle={part.parttype ?? "placeholder type"}

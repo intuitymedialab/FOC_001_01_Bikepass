@@ -1,8 +1,9 @@
 "use client";
 
-import { Textarea } from "@/components/ui/textarea";
 import { updateNote } from "@/app/actions";
 import { FocusEventHandler } from "react";
+import TextareaAutosize from "react-textarea-autosize";
+
 import _ from "lodash";
 
 export function Note(props: {
@@ -18,9 +19,11 @@ export function Note(props: {
 
   return (
     <div className="bg-white p-2  rounded-lg mb-8">
-      <Textarea
+      <TextareaAutosize
         name="bikename"
         onBlur={onNoteChange}
+        className="w-full"
+        minRows={5}
         defaultValue={props.note}
       />
     </div>

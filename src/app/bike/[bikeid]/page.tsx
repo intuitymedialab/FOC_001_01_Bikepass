@@ -5,6 +5,7 @@ import { Header } from "@/components/elements/Header";
 import { Listitem } from "@/components/elements/Listitem";
 import { Note } from "@/components/elements/Note";
 import { AddButton } from "@/components/elements/AddButton";
+import { Footer } from "@/components/elements/Footer";
 
 const supabaseUrl = process.env.SUPABASE_URL!;
 const supabaseKey = process.env.SUPABASE_SERVICE_KEY!;
@@ -32,7 +33,7 @@ export default async function Bike({ params }: { params: { bikeid: string } }) {
 
   return (
     <>
-      <div className="w-screen h-screen bg-neutral-100">
+      <div className="w-screen">
         <Header
           title={currentBike.bikename ?? ""}
           id={currentBike.bikeuuid}
@@ -65,7 +66,7 @@ export default async function Bike({ params }: { params: { bikeid: string } }) {
 
             <AddButton bikeid={currentBike.bikeuuid} />
           </div>
-
+          <Footer />
           <div className="mb-24"></div>
         </div>
       </div>

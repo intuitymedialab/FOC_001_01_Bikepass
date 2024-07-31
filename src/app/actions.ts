@@ -67,17 +67,18 @@ export async function uploadImage(
   isComponent: boolean,
 ) {
   const file = Buffer.from(image.replace(/data:.*?;base64,/, ""), "base64url");
-  await supabase.storage.from("bikepassImages").upload(`public/${name}`, file, {
-    contentType,
-  });
+  await supabase.storage
+    .from("bikepassImages")
+    .upload(`public/${id}/${name}`, file, {
+      contentType,
+    });
 
-  let imagePath = `https://olxlvbczlprszofhhvaa.supabase.co/storage/v1/object/public/bikepassImages/public/${name}`;
+  let imagePath = `https://olxlvbczlprszofhhvaa.supabase.co/storage/v1/object/public/bikepassImages/public/${id}/${name}`;
 
   const table = isComponent ? "part" : "bike";
   const idName = isComponent ? "partuuid" : "bikeuuid";
   const colName = isComponent ? "partimagepath" : "bikeimagepath";
 
-  // await supabase.from(table).update({ partimagepath }).eq(idName, id);
   await supabase
     .from(table)
     .update({ [colName]: imagePath })
