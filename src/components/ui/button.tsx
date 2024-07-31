@@ -21,7 +21,7 @@ const buttonVariants = cva(
         delete:
           "text-red-800 underline-offset-4 hover:underline hover:text-red-500",
         deleteoutline:
-          " text-red-800 align-bottom	hover:text-red-500 border border-red-800 hover:border-red-500 rounded-lg hover:bg-destructive/10",
+          "text-red-800 align-baseline hover:text-red-500 border border-red-800 hover:border-red-500 rounded-lg hover:bg-destructive/10",
       },
       size: {
         default: "h-12 px-4 py-4",

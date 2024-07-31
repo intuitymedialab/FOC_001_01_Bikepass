@@ -35,36 +35,42 @@ export default async function Bike({ params }: { params: { bikeid: string } }) {
     <>
       <div className="w-screen">
         <Header
-          title={currentBike.bikename ?? ""}
+          title={currentBike.bikename}
           id={currentBike.bikeuuid}
           isComponent={false}
         />
-        <div className="p-6">
+        <div className="p-4">
           <ImageUpload
-            imagepath={currentBike.bikeimagepath ?? ""}
+            imagepath={
+              currentBike.bikeimagepath || "/placeholder_bike_upload.jpg"
+            }
             alt="Image"
             id={currentBike.bikeuuid}
             isComponent={false}
           />
           <h2 className="font-bold text-2xl mb-3">Notes & Properties</h2>
           <Note
-            note={currentBike.bikenotes ?? "DefaultBikeNote"}
+            note={currentBike.bikenotes!}
             isComponent={false}
             id={currentBike.bikeuuid}
           />
 
           <h2 className="font-bold text-2xl mb-2">Components</h2>
           <div className="bg-white  rounded-lg mb-8">
-            {currentBike.part.map(part => (
+            {currentBike.part.map((part, idx) => (
               <Listitem
                 key={part.partuuid}
-                title={part?.partname ?? ""}
-                type={part?.parttype ?? ""}
+                title={part?.partname || "generic name"}
+                type={part?.parttype || "generic type"}
+                isLastItem={!(idx === currentBike.part.length - 1)}
                 id={part.partuuid ?? "No Part ID"}
               />
             ))}
 
-            <AddButton bikeid={currentBike.bikeuuid} />
+            <AddButton
+              bikeid={currentBike.bikeuuid}
+              isFirstItem={currentBike.part.length === 0}
+            />
           </div>
           <Footer />
           <div className="mb-24"></div>

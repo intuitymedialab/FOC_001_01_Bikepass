@@ -33,7 +33,7 @@ export default function RootLayout({
 
       <body
         className={cn(
-          "max-h-screen h-screen bg-background font-sans antialiased grid grid-rows-main overflow-hidden",
+          "max-h-screen h-screen bg-neutral-100  font-sans antialiased grid grid-rows-main overflow-hidden",
           Netto.variable,
           "font-netto",
         )}>

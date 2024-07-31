@@ -25,6 +25,7 @@ export function Note(props: {
         className="w-full"
         minRows={5}
         defaultValue={props.note}
+        placeholder="keep some notes..."
       />
     </div>
   );

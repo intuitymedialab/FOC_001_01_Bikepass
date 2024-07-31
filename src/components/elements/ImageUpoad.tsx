@@ -44,7 +44,7 @@ export function ImageUpload(props: {
         <Input
           ref={inputRef}
           type="file"
-          hidden={true}
+          className="invisible"
           onChange={handleFileUpload}
         />
         <div className="flex flex-col items-center justify-center mb-6 mt-20">
@@ -52,8 +52,8 @@ export function ImageUpload(props: {
             <Image
               className="rounded-lg"
               src={props.imagepath}
-              width={500}
-              height={171}
+              width={1000}
+              height={500}
               alt={props.alt}
             />
           </button>

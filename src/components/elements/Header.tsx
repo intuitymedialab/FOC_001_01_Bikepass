@@ -7,10 +7,10 @@ import { FocusEventHandler } from "react";
 import _ from "lodash";
 
 export function Header(props: {
-  title: string;
+  title: string | null;
   id: string;
   isComponent: boolean;
-  subtitle?: string;
+  subtitle?: string | null;
   backbuttonid?: string;
 }) {
   const onTypeChange: FocusEventHandler<HTMLInputElement> = ({
@@ -27,27 +27,30 @@ export function Header(props: {
 
   if (props.isComponent) {
     return (
-      <div className="fixed w-screen bg-white pl-6  border-b border-neutral-30 drop-shadow-sm h-24">
-        <div className="mt-4 flex flex-row text-black font-bold items-center">
-          <div className="basis-1/6">
+      <div className="fixed w-screen bg-white pl-4 border-b border-neutral-30 drop-shadow-sm h-24">
+        <div className="mt-4 flex flex-row gap-4 text-black font-bold items-center">
+          <div className="">
             <Link href={`/bike/${props.backbuttonid}`} className=" text-3xl">
               ←
             </Link>
           </div>
-          <div className="basis-5/6  flex flex-col content-end">
-            <div className=" align-text-bottom  text-xl text-neutral-400 ">
+          <div className="flex-1  flex flex-col content-end pr-4">
+            <div className="align-text-bottom  text-xl  ">
               <Input
                 name="parttype"
-                defaultValue={props.subtitle ?? ""}
+                defaultValue={props.subtitle!}
+                placeholder={"specify component type"}
                 onBlur={onTypeChange}
+                className="text-neutral-500  placeholder-neutral-500 placeholder-opacity-25"
               />
             </div>
-            <div className="mb-1">
+            <div className="mb-1 ">
               <Input
                 name="partname"
-                defaultValue={props.title ?? ""}
+                defaultValue={props.title!}
+                placeholder={"name the component"}
                 onBlur={onNameChange}
-                className="text-3xl"
+                className="text-3xl placeholder-opacity-25"
               />
             </div>
           </div>
@@ -79,13 +82,15 @@ export function Header(props: {
     );
   } else {
     return (
-      <div className="fixed w-screen bg-white p-6 h-24 border-b border-neutral-300	drop-shadow-sm">
-        <h1 className="text-5xl align-text-bottom	mt-5 text-black font-bold">
+      <div className="fixed w-screen bg-white p-5 h-24 border-b border-neutral-300	drop-shadow-sm">
+        <h1 className="text-5xl align-text-bottom	mt-4 text-black font-bold">
           <div className="rounded-lg mb-9">
             <Input
               name="bikename"
-              defaultValue={props.title ?? ""}
+              defaultValue={props.title!}
+              placeholder="name your bike"
               onBlur={onNameChange}
+              className="placeholder-opacity-25"
             />
           </div>
         </h1>

@@ -33,26 +33,22 @@ export default async function Part({ params }: { params: { partid: string } }) {
     <>
       <div className="w-screen ">
         <Header
-          title={part.partname ?? "placeholder name"}
-          subtitle={part.parttype ?? "placeholder type"}
+          title={part.partname}
+          subtitle={part.parttype}
           backbuttonid={part.refbikeuuid ?? ""}
           id={part.partuuid}
           isComponent={true}
         />
-        <div className="p-6">
+        <div className="p-4">
           <ImageUpload
-            imagepath={part.partimagepath ?? ""}
+            imagepath={part.partimagepath || "/placeholder_part_upload.png"}
             alt="PartImage"
             id={part.partuuid}
             isComponent={true}
           />
 
           <h2 className="font-bold text-2xl mb-3">Notes & Properties</h2>
-          <Note
-            note={part.partnotes ?? "DefaultNotes"}
-            isComponent={true}
-            id={part.partuuid}
-          />
+          <Note note={part.partnotes!} isComponent={true} id={part.partuuid} />
 
           <div>
             <DeleteButton

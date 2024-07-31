@@ -9,7 +9,7 @@ export function Footer() {
           href="https://www.intuity.de/"
           target="_blank"
           rel="noopener noreferrer">
-          <Image src={logo} className="h-6" alt="logo" />
+          <Image src={logo} className="h-6 w-auto" alt="logo" />
         </a>
       </div>
     </div>
