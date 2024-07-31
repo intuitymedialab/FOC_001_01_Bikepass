@@ -73,6 +73,7 @@ export default async function Bike({ params }: { params: { bikeid: string } }) {
             />
           </div>
           <Footer />
+
           <div className="mb-24"></div>
         </div>
       </div>
