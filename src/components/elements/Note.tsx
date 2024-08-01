@@ -18,7 +18,7 @@ export function Note(props: {
   };
 
   return (
-    <div className="bg-white p-2  rounded-lg mb-8">
+    <div className="bg-white px-3 pt-3 pb-1  rounded-lg mb-8">
       <TextareaAutosize
         name="bikename"
         onBlur={onNoteChange}

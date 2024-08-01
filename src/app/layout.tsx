@@ -43,12 +43,12 @@ export default function RootLayout({
           id="sg78fiued"
           strategy="beforeInteractive">{`window.difyChatbotConfig = {
               token: 'OJRejAeeXJDMrUk5',
-             baseUrl: 'http://dify.cool.ity.cloud'
+             baseUrl: 'https://dify.cool.ity.cloud'
            }`}</Script>
         <Script
           id="OJRejAeeXJDMrUk5"
           defer
-          src="http://dify.cool.ity.cloud/embed.min.js"
+          src="https://dify.cool.ity.cloud/embed.min.js"
           strategy="beforeInteractive"
         />
       </body>
