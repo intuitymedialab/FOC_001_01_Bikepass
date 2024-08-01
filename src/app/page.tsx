@@ -28,8 +28,9 @@ export default function Home() {
               </div>
               <div className="text-white px-11">
                 <p>
-                  Bikepass allows you to track your bikes components, keep notes
-                  about maintanance or hard to remember compatebility data.
+                  Bikepass allows you to keep track of your bike's components,
+                  make notes about maintenance maintenance or hard to remember
+                  compatibility data.
                 </p>
               </div>
               <div className="">
