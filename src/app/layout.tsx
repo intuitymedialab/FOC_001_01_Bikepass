@@ -3,7 +3,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import Head from "next/head";
 import { Netto } from "@/lib/nettoFont";
-import Script from "next/script";
+// import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "intuity prototype",
@@ -39,7 +39,7 @@ export default function RootLayout({
           "font-netto",
         )}>
         <main className="overflow-auto h-full bg-neutral-100">{children}</main>
-        <Script
+        {/* <Script
           id="sg78fiued"
           strategy="beforeInteractive">{`window.difyChatbotConfig = {
               token: 'OJRejAeeXJDMrUk5',
@@ -50,7 +50,7 @@ export default function RootLayout({
           defer
           src="https://dify.cool.ity.cloud/embed.min.js"
           strategy="beforeInteractive"
-        />
+        /> */}
       </body>
     </html>
   );
