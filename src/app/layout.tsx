@@ -38,7 +38,9 @@ export default function RootLayout({
           Netto.variable,
           "font-netto",
         )}>
-        <main className="overflow-auto h-full bg-neutral-100">{children}</main>
+        <main className="overflow-auto h-screen bg-neutral-100">
+          {children}
+        </main>
         {/* <Script
           id="sg78fiued"
           strategy="beforeInteractive">{`window.difyChatbotConfig = {

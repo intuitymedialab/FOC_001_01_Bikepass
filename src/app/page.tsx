@@ -1,12 +1,46 @@
-export default function Home() {
+"use client";
 
-    return (
-        <>
-            <div className="items-center justify-items-center h-svh" >
-                <div className="py-72">
-                    <h1 className="text-center align-middle text-6xl font-black text-stone-200 mt-500">Bike Pass</h1>
-                </div>
+import logo from "@/assets/intuity_logo_weiss.svg";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { insertBike } from "./actions";
+
+export default function Home() {
+  async function handlePress() {
+    const bikeid = await insertBike();
+    window.location.href = `/bike/${bikeid}`;
+  }
+
+  return (
+    <>
+      <div className="bg-black">
+        <div
+          className="w-full h-screen bg-cover bg-center backdrop-opacity-20"
+          style={{
+            backgroundImage: "url('/splash-hero.jpg')",
+          }}>
+          <div className="">
+            <div className="flex flex-col  gap-6 items-center justify-center pt-36 ">
+              <Image src={logo} className="h-20 w-auto " alt="logo" />
+
+              <div className="">
+                <h2 className="text-white text-3xl font-bold">bikepass</h2>
+              </div>
+              <div className="text-white px-11">
+                <p>
+                  Bikepass allows you to track your bikes components, keep notes
+                  about maintanance or hard to remember compatebility data.
+                </p>
+              </div>
+              <div className="">
+                <Button onClick={handlePress} variant={"outlineinv"}>
+                  Get Started!
+                </Button>
+              </div>
             </div>
-        </>
-    );
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }

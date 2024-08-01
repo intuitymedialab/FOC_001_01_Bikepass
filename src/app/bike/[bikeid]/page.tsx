@@ -6,6 +6,7 @@ import { Listitem } from "@/components/elements/Listitem";
 import { Note } from "@/components/elements/Note";
 import { AddButton } from "@/components/elements/AddButton";
 import { Footer } from "@/components/elements/Footer";
+import { DeleteButton } from "@/components/elements/DeleteButton";
 
 const supabaseUrl = process.env.SUPABASE_URL!;
 const supabaseKey = process.env.SUPABASE_SERVICE_KEY!;
@@ -72,6 +73,8 @@ export default async function Bike({ params }: { params: { bikeid: string } }) {
               isFirstItem={currentBike.part.length === 0}
             />
           </div>
+
+          <DeleteButton bikeid={currentBike.bikeuuid} />
           <Footer />
 
           <div className="mb-24"></div>

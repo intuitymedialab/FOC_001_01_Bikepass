@@ -1,19 +1,34 @@
 "use client";
 
-import { deleteComponent } from "@/app/actions";
+import { deleteBike, deleteComponent } from "@/app/actions";
 import { Button } from "../ui/button";
 
-export function DeleteButton(props: { bikeid: string; partid: string }) {
-  async function handleClick() {
-    await deleteComponent(props.partid);
+export function DeleteButton(props: { bikeid: string; partid?: string }) {
+  async function handleBikeDeltetion() {
+    await deleteBike(props.bikeid);
+    window.location.href = `/`;
+  }
+
+  async function handleComponentDeltetion() {
+    await deleteComponent(props.partid!);
     window.location.href = `/bike/${props.bikeid}`;
   }
 
-  return (
-    <div className="flex flex-col items-center justify-center">
-      <Button variant="deleteoutline" onClick={handleClick}>
-        Delete Component
-      </Button>
-    </div>
-  );
+  if (!props.partid) {
+    return (
+      <div className="flex flex-col items-center justify-center mb-6">
+        <Button variant="deleteoutline" onClick={handleBikeDeltetion}>
+          Delete Bike
+        </Button>
+      </div>
+    );
+  } else {
+    return (
+      <div className="flex flex-col items-center justify-center mb-6">
+        <Button variant="deleteoutline" onClick={handleComponentDeltetion}>
+          Delete Component
+        </Button>
+      </div>
+    );
+  }
 }

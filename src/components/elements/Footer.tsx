@@ -1,5 +1,5 @@
 import Image from "next/image";
-import logo from "@/assets/intuity_logo_weiss.svg";
+import logo from "@/assets/intuity_logo_grau.svg";
 
 export function Footer() {
   return (

@@ -92,3 +92,25 @@ export async function uploadImage(
 export async function deleteComponent(id: string) {
   await supabase.from("part").delete().eq("partuuid", id);
 }
+
+export async function deleteBike(id: string) {
+  // let { data: currentBike } = await supabase
+  //   .from("bike")
+  //   .select("part(partuuid)")
+  //   .eq("bikeuuid", id)
+  //   .single();
+
+  // console.log(currentBike);
+
+  await supabase.from("bike").delete().eq("bikeuuid", id);
+}
+
+export async function insertBike() {
+  const uuid = randomUUID();
+  await supabase
+    .from("bike")
+    .insert([{ bikeuuid: uuid }])
+    .select();
+
+  return uuid;
+}
