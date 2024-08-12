@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ChevronRight } from "lucide-react";
 
 export function Listitem(props: {
   title: string;
@@ -28,7 +29,9 @@ export function Listitem(props: {
               </div>
             </div>
           </div>
-          <p className="text-black text-2xl m-2 pt-2 ">→</p>
+
+          <ChevronRight size={24} />
+          {/* <p className="text-black text-2xl m-2 pt-2 "></p> */}
         </div>
       </div>
     </Link>

@@ -3,7 +3,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import Head from "next/head";
 import { Netto } from "@/lib/nettoFont";
-// import Script from "next/script";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "intuity prototype",
@@ -34,13 +34,11 @@ export default function RootLayout({
 
       <body
         className={cn(
-          "max-h-screen h-screen bg-neutral-100  font-sans antialiased grid grid-rows-main overflow-hidden",
+          "max-h-screen h-screen font-sans antialiased grid grid-rows-main overflow-hidden",
           Netto.variable,
           "font-netto",
         )}>
-        <main className="overflow-auto h-screen bg-neutral-100">
-          {children}
-        </main>
+        <main className="overflow-auto h-screen relative">{children}</main>
         {/* <Script
           id="sg78fiued"
           strategy="beforeInteractive">{`window.difyChatbotConfig = {

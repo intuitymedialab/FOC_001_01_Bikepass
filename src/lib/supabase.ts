@@ -11,28 +11,28 @@ export type Database = {
     Tables: {
       bike: {
         Row: {
-          bikeimagepath: string | null
-          bikename: string | null
-          bikenotes: string | null
-          bikeuuid: string | null
           created_at: string
           id: number
+          imagepath: string | null
+          name: string | null
+          notes: string | null
+          uuid: string | null
         }
         Insert: {
-          bikeimagepath?: string | null
-          bikename?: string | null
-          bikenotes?: string | null
-          bikeuuid?: string | null
           created_at?: string
           id?: number
+          imagepath?: string | null
+          name?: string | null
+          notes?: string | null
+          uuid?: string | null
         }
         Update: {
-          bikeimagepath?: string | null
-          bikename?: string | null
-          bikenotes?: string | null
-          bikeuuid?: string | null
           created_at?: string
           id?: number
+          imagepath?: string | null
+          name?: string | null
+          notes?: string | null
+          uuid?: string | null
         }
         Relationships: []
       }
@@ -40,32 +40,32 @@ export type Database = {
         Row: {
           created_at: string
           id: number
-          partimagepath: string | null
-          partname: string | null
-          partnotes: string | null
-          parttype: string | null
-          partuuid: string | null
+          imagepath: string | null
+          name: string | null
+          notes: string | null
           refbikeuuid: string | null
+          type: string | null
+          uuid: string | null
         }
         Insert: {
           created_at?: string
           id?: number
-          partimagepath?: string | null
-          partname?: string | null
-          partnotes?: string | null
-          parttype?: string | null
-          partuuid?: string | null
+          imagepath?: string | null
+          name?: string | null
+          notes?: string | null
           refbikeuuid?: string | null
+          type?: string | null
+          uuid?: string | null
         }
         Update: {
           created_at?: string
           id?: number
-          partimagepath?: string | null
-          partname?: string | null
-          partnotes?: string | null
-          parttype?: string | null
-          partuuid?: string | null
+          imagepath?: string | null
+          name?: string | null
+          notes?: string | null
           refbikeuuid?: string | null
+          type?: string | null
+          uuid?: string | null
         }
         Relationships: [
           {
@@ -73,7 +73,7 @@ export type Database = {
             columns: ["refbikeuuid"]
             isOneToOne: false
             referencedRelation: "bike"
-            referencedColumns: ["bikeuuid"]
+            referencedColumns: ["uuid"]
           },
         ]
       }

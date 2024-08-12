@@ -21,7 +21,7 @@ const buttonVariants = cva(
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         delete:
-          "text-red-800 underline-offset-4 hover:underline hover:text-red-500",
+          "text-back underline-offset-4 underline hover:underline hover:text-red-500",
         deleteoutline:
           "text-red-800 align-baseline hover:text-red-500 border border-red-800 hover:border-red-500 rounded-lg hover:bg-destructive/10",
       },

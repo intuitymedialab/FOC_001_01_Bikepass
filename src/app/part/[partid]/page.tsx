@@ -1,9 +1,11 @@
 import { createClient } from "@supabase/supabase-js";
 import { Database } from "@/lib/supabase";
-import { Header } from "@/components/elements/Header";
 import { Note } from "@/components/elements/Note";
-import { ImageUpload } from "@/components/elements/ImageUpoad";
+import { ImageUpload } from "@/components/elements/ImageUpload";
 import { DeleteButton } from "@/components/elements/DeleteButton";
+import { ComponentName } from "@/components/elements/ComponentName";
+import { ComponentType } from "@/components/elements/ComponentType";
+import { Backbutton } from "@/components/elements/BackButton";
 
 const supabaseUrl = process.env.SUPABASE_URL!;
 const supabaseKey = process.env.SUPABASE_SERVICE_KEY!;
@@ -19,42 +21,46 @@ export default async function Part({ params }: { params: { partid: string } }) {
 
   let { data: part, error } = await supabase
     .from("part")
-    .select(
-      "partuuid, partname, partnotes, partimagepath, refbikeuuid, parttype",
-    )
-    .eq("partuuid", params.partid)
+    .select("uuid, name, notes, imagepath, refbikeuuid, type")
+    .eq("uuid", params.partid)
     .single();
 
-  if (error || !part || !part.partuuid) {
+  if (error || !part || !part.uuid) {
     return <h1>No part with this ID</h1>;
   }
 
   return (
     <>
-      <div className="w-screen ">
-        <Header
-          title={part.partname}
-          subtitle={part.parttype}
-          backbuttonid={part.refbikeuuid ?? ""}
-          id={part.partuuid}
-          isComponent={true}
-        />
-        <div className="p-4">
+      <div className="fixed">
+        <Backbutton backbuttonid={part.refbikeuuid ?? ""} />
+      </div>
+      <div className="fixed -z-10 w-full">
+        <div className="">
           <ImageUpload
-            imagepath={part.partimagepath || "/placeholder_part_upload.png"}
+            imagepath={part.imagepath ?? ""}
             alt="PartImage"
-            id={part.partuuid}
+            id={part.uuid}
             isComponent={true}
           />
+        </div>
+      </div>
 
-          <h2 className="font-bold text-2xl mb-3">Notes & Properties</h2>
-          <Note note={part.partnotes!} isComponent={true} id={part.partuuid} />
+      <div className="z-20 mt-80 w-screen border-separate rounded-t-lg border border-slate-400 bg-slate-100 pb-36 shadow-lg">
+        <div className="px-4 pt-6">
+          <h2 className="mb-1 px-3 text-lg">Name</h2>
+          <ComponentName id={part.uuid} title={part.name ?? ""} />
+        </div>
+
+        <div className="px-4">
+          <h2 className="mb-1 px-3 text-lg">Type</h2>
+          <ComponentType id={part.uuid} title={part.type ?? ""} />
+        </div>
+        <div className="px-4">
+          <h2 className="mb-1 px-3 text-lg">Notes & Properties</h2>
+          <Note note={part.notes!} isComponent={true} id={part.uuid} />
 
           <div>
-            <DeleteButton
-              bikeid={part.refbikeuuid ?? ""}
-              partid={part.partuuid}
-            />
+            <DeleteButton bikeid={part.refbikeuuid ?? ""} partid={part.uuid} />
           </div>
 
           <div className="mb-24"></div>
