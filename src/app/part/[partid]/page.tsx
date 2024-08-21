@@ -45,7 +45,7 @@ export default async function Part({ params }: { params: { partid: string } }) {
       <div className="flex h-80">
         <ImageUpload id={part.uuid} isComponent={true} />
       </div>
-      <div className="shadow-up z-20 w-screen border-separate rounded-t-lg border-t border-slate-400 bg-slate-100 pb-36">
+      <div className="shadow-up z-20 w-screen border-separate rounded-t-lg border-t border-slate-400 bg-slate-100 pb-20">
         <div className="px-4 pt-6">
           <h2 className="mb-1 px-3 text-lg">Name</h2>
           <ComponentName id={part.uuid} title={part.name ?? ""} />

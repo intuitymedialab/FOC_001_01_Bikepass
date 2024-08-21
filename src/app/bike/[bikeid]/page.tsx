@@ -44,7 +44,7 @@ export default async function Bike({ params }: { params: { bikeid: string } }) {
         <ImageUpload id={bike.uuid} isComponent={false} />
       </div>
 
-      <div className="z-20 w-screen border-separate rounded-t-lg border-t border-slate-400 bg-slate-100 pb-36 shadow-lg">
+      <div className="z-20 w-screen border-separate rounded-t-lg border-t border-slate-400 bg-slate-100 pb-28 shadow-lg">
         <div className="px-4 pt-6">
           <h2 className="mb-1 px-3 text-lg">Name</h2>
           <BikeName id={bike.uuid} title={bike.name ?? ""} />
