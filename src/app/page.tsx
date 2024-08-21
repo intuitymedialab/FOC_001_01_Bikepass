@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 
 import logo from "@/assets/intuity_logo_weiss.svg";
@@ -15,18 +16,19 @@ export default function Home() {
     <>
       <div className="bg-black">
         <div
-          className="w-full h-screen bg-cover bg-center backdrop-opacity-20"
+          className="h-screen w-full bg-cover bg-center backdrop-opacity-20"
           style={{
             backgroundImage: "url('/splash-hero.jpg')",
-          }}>
+          }}
+        >
           <div className="">
-            <div className="flex flex-col  gap-6 items-center justify-center pt-36 ">
-              <Image src={logo} className="h-20 w-auto " alt="logo" />
+            <div className="flex flex-col items-center justify-center gap-6 pt-36">
+              <Image src={logo} className="h-20 w-auto" alt="logo" />
 
               <div className="">
-                <h2 className="text-white text-3xl font-bold">bikepass</h2>
+                <h2 className="text-3xl font-bold text-white">bikepass</h2>
               </div>
-              <div className="text-white px-11">
+              <div className="px-11 text-white">
                 <p>
                   Bikepass allows you to keep track of your bike's components,
                   make notes about maintenance maintenance or hard to remember

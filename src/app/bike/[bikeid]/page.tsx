@@ -5,6 +5,7 @@ import { Listitem } from "@/components/elements/Listitem";
 import { Note } from "@/components/elements/Note";
 import { AddButton } from "@/components/elements/AddButton";
 import { Footer } from "@/components/elements/Footer";
+import { ImageBackground } from "@/components/elements/ImageBackground";
 
 import { BikeName } from "@/components/elements/BikeName";
 
@@ -32,16 +33,18 @@ export default async function Bike({ params }: { params: { bikeid: string } }) {
 
   return (
     <>
-      <div className="fixed -z-10 w-full">
-        <ImageUpload
-          imagepath={bike.imagepath || "/placeholder_bike_upload.jpg"}
-          alt="Image"
-          id={bike.uuid}
-          isComponent={false}
+      <div className="h-330px fixed -z-10 flex w-full">
+        <ImageBackground
+          imagepath={bike.imagepath ?? ""}
+          alt={"Component Image"}
+          prompt="Upload Bike Image"
         />
       </div>
+      <div className="flex h-80">
+        <ImageUpload id={bike.uuid} isComponent={false} />
+      </div>
 
-      <div className="z-20 mt-96 w-screen border-separate rounded-t-lg border border-slate-400 bg-slate-100 pb-36 shadow-lg">
+      <div className="z-20 w-screen border-separate rounded-t-lg border-t border-slate-400 bg-slate-100 pb-36 shadow-lg">
         <div className="px-4 pt-6">
           <h2 className="mb-1 px-3 text-lg">Name</h2>
           <BikeName id={bike.uuid} title={bike.name ?? ""} />
@@ -74,7 +77,7 @@ export default async function Bike({ params }: { params: { bikeid: string } }) {
 
           <Footer />
 
-          <div className="mb-24"></div>
+          <div className=""></div>
         </div>
       </div>
     </>

@@ -6,6 +6,7 @@ import { DeleteButton } from "@/components/elements/DeleteButton";
 import { ComponentName } from "@/components/elements/ComponentName";
 import { ComponentType } from "@/components/elements/ComponentType";
 import { Backbutton } from "@/components/elements/BackButton";
+import { ImageBackground } from "@/components/elements/ImageBackground";
 
 const supabaseUrl = process.env.SUPABASE_URL!;
 const supabaseKey = process.env.SUPABASE_SERVICE_KEY!;
@@ -34,18 +35,17 @@ export default async function Part({ params }: { params: { partid: string } }) {
       <div className="fixed">
         <Backbutton backbuttonid={part.refbikeuuid ?? ""} />
       </div>
-      <div className="fixed -z-10 w-full">
-        <div className="">
-          <ImageUpload
-            imagepath={part.imagepath ?? ""}
-            alt="PartImage"
-            id={part.uuid}
-            isComponent={true}
-          />
-        </div>
+      <div className="h-330px fixed -z-10 flex w-full">
+        <ImageBackground
+          imagepath={part.imagepath ?? ""}
+          alt={"Component Image"}
+          prompt="Upload Part Image"
+        />
       </div>
-
-      <div className="z-20 mt-80 w-screen border-separate rounded-t-lg border border-slate-400 bg-slate-100 pb-36 shadow-lg">
+      <div className="flex h-80">
+        <ImageUpload id={part.uuid} isComponent={true} />
+      </div>
+      <div className="shadow-up z-20 w-screen border-separate rounded-t-lg border-t border-slate-400 bg-slate-100 pb-36">
         <div className="px-4 pt-6">
           <h2 className="mb-1 px-3 text-lg">Name</h2>
           <ComponentName id={part.uuid} title={part.name ?? ""} />
@@ -63,7 +63,7 @@ export default async function Part({ params }: { params: { partid: string } }) {
             <DeleteButton bikeid={part.refbikeuuid ?? ""} partid={part.uuid} />
           </div>
 
-          <div className="mb-24"></div>
+          <div className=""></div>
         </div>
       </div>
     </>

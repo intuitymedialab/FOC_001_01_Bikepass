@@ -56,6 +56,9 @@ const config = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+      boxShadow: {
+        up: "0 35px 60px 15px rgba(0, 0, 0, 0.3)",
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -70,6 +73,10 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+      },
+      height: {
+        "330px": "330px",
+        "320px": "320px",
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
