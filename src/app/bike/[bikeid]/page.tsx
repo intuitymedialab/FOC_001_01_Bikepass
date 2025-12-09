@@ -6,8 +6,10 @@ import { Note } from "@/components/elements/Note";
 import { AddButton } from "@/components/elements/AddButton";
 import { Footer } from "@/components/elements/Footer";
 import { ImageBackground } from "@/components/elements/ImageBackground";
+import NotFound from "@/components/elements/NotFound";
 
 import { BikeName } from "@/components/elements/BikeName";
+import { Button } from "@/components/ui/button";
 
 const supabaseUrl = process.env.SUPABASE_URL!;
 const supabaseKey = process.env.SUPABASE_SERVICE_KEY!;
@@ -28,7 +30,11 @@ export default async function Bike({ params }: { params: { bikeid: string } }) {
     .single();
 
   if (error || !bike || !bike.uuid) {
-    return <h1>No bike with this ID</h1>;
+    return (
+      <div className="flex flex-1 items-center justify-center">
+        <NotFound errorText={"Bike not found :("} />
+      </div>
+    );
   }
 
   return (

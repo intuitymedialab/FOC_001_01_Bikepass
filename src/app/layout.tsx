@@ -39,7 +39,7 @@ export default function RootLayout({
           "font-netto",
         )}
       >
-        <main className="relative h-screen overflow-auto">{children}</main>
+        <main className="relative flex h-screen overflow-auto">{children}</main>
         {/* <Script
           id="sg78fiued"
           strategy="beforeInteractive">{`window.difyChatbotConfig = {

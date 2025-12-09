@@ -13,10 +13,15 @@ pnpm install
 pnpm dev
 ```
 
-Open [  ](http://localhost:3000) with your browser to see the result.
+Open [ ](http://localhost:3000) with your browser to see the result.
 
 ## Stack
 
 - Next 14
 - Modified Shadcn Component Library -> [ui.shadcn.com](https://ui.shadcn.com/)
 - Styling mainly via globals.css and **only if necessary** by modifying components directly
+
+ToDo:
+
+- Dynamic Resizing for images
+- delete old image when new image is uploaded
