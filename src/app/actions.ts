@@ -55,8 +55,19 @@ export async function updateNote(
 
 export async function insertComponent(bikeid: string) {
   const uuid = randomUUID();
-  await supabase.from("part").insert([{ uuid: uuid, refbikeuuid: bikeid }]);
-  return uuid;
+  const { data, error } = await supabase
+    .from("part")
+    .insert([{ uuid: uuid, refbikeuuid: bikeid }])
+    .select()
+    .single();
+
+  if (error || !data) {
+    throw new Error(`Failed to create component: ${error?.message || "Unknown error"}`);
+  }
+
+  revalidatePath(`/part/${uuid}`);
+  revalidatePath(`/bike/${bikeid}`); // Also revalidate the bike page since it shows the parts list
+  redirect(`/part/${uuid}`);
 }
 
 export async function uploadImage(
@@ -90,10 +101,55 @@ export async function deleteComponent(id: string) {
 
 export async function insertBike() {
   const uuid = randomUUID();
-  await supabase
+  
+  // Try insert without .single() first to avoid potential issues
+  const { data, error } = await supabase
     .from("bike")
     .insert([{ uuid: uuid }])
-    .select();
+    .select("uuid");
 
-  return uuid;
+  if (error) {
+    // Check if it's a duplicate key error on the primary key (id)
+    // This could indicate a sequence issue or race condition
+    if (
+      error.code === "23505" ||
+      error.message?.includes("duplicate key") ||
+      error.message?.includes("unique constraint")
+    ) {
+      // If it's a primary key conflict, the sequence might be out of sync
+      // Try one more time with a new UUID and a small delay
+      await new Promise((resolve) => setTimeout(resolve, 100));
+      const uuid2 = randomUUID();
+      const { data: data2, error: error2 } = await supabase
+        .from("bike")
+        .insert([{ uuid: uuid2 }])
+        .select("uuid");
+
+      if (error2) {
+        throw new Error(
+          `Failed to create bike: Database sequence error. The bike table's primary key sequence is out of sync. ` +
+          `Please run the SQL fix in fix-bike-sequence.sql in your Supabase SQL Editor. ` +
+          `Error: ${error2.message}`,
+        );
+      }
+
+      if (!data2 || data2.length === 0 || !data2[0]?.uuid) {
+        throw new Error("Failed to create bike: No data returned");
+      }
+
+      revalidatePath(`/bike/${data2[0].uuid}`);
+      redirect(`/bike/${data2[0].uuid}`);
+      return;
+    }
+
+    // For other errors, throw immediately
+    throw new Error(`Failed to create bike: ${error.message || "Unknown error"}`);
+  }
+
+  if (!data || data.length === 0 || !data[0]?.uuid) {
+    throw new Error("Failed to create bike: No data returned");
+  }
+
+  revalidatePath(`/bike/${data[0].uuid}`);
+  redirect(`/bike/${data[0].uuid}`);
 }

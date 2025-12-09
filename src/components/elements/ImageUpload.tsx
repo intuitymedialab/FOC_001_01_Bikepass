@@ -32,16 +32,16 @@ export function ImageUpload(props: { id: string; isComponent: boolean }) {
 
   return (
     <>
-      <form className="m-0 flex flex-1">
+      <form className="m-0 flex h-full w-full">
         <input
           ref={inputRef}
           type="file"
           className="invisible m-0 h-0 w-0"
           onChange={handleFileUpload}
         />
-        <div className="flex flex-1">
+        <div className="flex h-full w-full">
           <button
-            className="flex w-full flex-1 items-center justify-center"
+            className="flex h-full w-full items-center justify-center"
             onClick={handleButtonClick}
           ></button>
         </div>

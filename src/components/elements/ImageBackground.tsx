@@ -13,13 +13,14 @@ export function ImageBackground(props: {
       <img
         src={props.imagepath}
         alt={props.alt}
-        className="flex flex-1 object-cover"
+        className="h-full w-full object-cover"
+        style={{ objectPosition: 'center' }}
       />
     );
   } else {
     return (
       <>
-        <div className="h-330px flex flex-1 flex-col items-center justify-center bg-slate-400">
+        <div className="flex h-full w-full flex-col items-center justify-center bg-slate-400">
           <UploadIcon />
           <p className="mt-1 font-bold">{props.prompt}</p>
         </div>

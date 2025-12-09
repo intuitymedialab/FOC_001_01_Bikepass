@@ -4,8 +4,8 @@ import { insertComponent } from "@/app/actions";
 
 export function AddButton(props: { bikeid: string; isFirstItem: boolean }) {
   async function newComponent() {
-    const uuid = await insertComponent(props.bikeid);
-    window.location.href = `/part/${uuid}`;
+    await insertComponent(props.bikeid);
+    // redirect happens in the server action
   }
 
   const buttonStyle = props.isFirstItem

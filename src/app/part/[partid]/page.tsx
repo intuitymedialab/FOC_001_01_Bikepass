@@ -17,13 +17,14 @@ if (!supabaseUrl || !supabaseKey) {
 
 export const revalidate = 0;
 
-export default async function Part({ params }: { params: { partid: string } }) {
+export default async function Part({ params }: { params: Promise<{ partid: string }> }) {
+  const { partid } = await params;
   const supabase = createClient<Database>(supabaseUrl, supabaseKey);
 
   let { data: part, error } = await supabase
     .from("part")
     .select("uuid, name, notes, imagepath, refbikeuuid, type")
-    .eq("uuid", params.partid)
+    .eq("uuid", partid)
     .single();
 
   if (error || !part || !part.uuid) {
@@ -32,20 +33,52 @@ export default async function Part({ params }: { params: { partid: string } }) {
 
   return (
     <>
-      <div className="fixed">
-        <Backbutton backbuttonid={part.refbikeuuid ?? ""} />
-      </div>
-      <div className="h-330px fixed -z-10 flex w-full">
+      {/* Background Image - lowest layer */}
+      <div 
+        className="fixed left-0 -z-10 w-full overflow-hidden"
+        style={{ 
+          top: 0,
+          height: '360px',
+          paddingTop: 'env(safe-area-inset-top)',
+          marginTop: 'calc(-1 * env(safe-area-inset-top))'
+        }}
+      >
         <ImageBackground
           imagepath={part.imagepath ?? ""}
           alt={"Component Image"}
           prompt="Upload Part Image"
         />
       </div>
-      <div className="flex h-80">
+      
+      {/* Back Button - top layer, clickable */}
+      <div 
+        className="fixed left-0 z-40"
+        style={{ 
+          top: 'env(safe-area-inset-top)',
+          marginTop: '12px'
+        }}
+      >
+        <Backbutton backbuttonid={part.refbikeuuid ?? ""} />
+      </div>
+      
+      {/* Image Upload Overlay - middle layer, clickable - only visible image area */}
+      <div 
+        className="fixed left-0 z-10 w-full"
+        style={{ 
+          top: 0,
+          height: '330px',
+          paddingTop: 'env(safe-area-inset-top)',
+          marginTop: 'calc(-1 * env(safe-area-inset-top))'
+        }}
+      >
         <ImageUpload id={part.uuid} isComponent={true} />
       </div>
-      <div className="shadow-up z-20 w-screen border-separate rounded-t-lg border-t border-slate-400 bg-slate-100 pb-20">
+      
+      {/* Form Card - top layer, starts below image area, blocks clicks when overlapping */}
+      <div 
+        className="relative z-20 block w-full max-w-full border-separate rounded-t-lg border-t border-slate-400 bg-slate-100 pb-20 shadow-lg"
+        style={{ marginTop: '330px', minHeight: 'fit-content' }}
+      >
         <div className="px-4 pt-6">
           <h2 className="mb-1 px-3 text-lg">Name</h2>
           <ComponentName id={part.uuid} title={part.name ?? ""} />

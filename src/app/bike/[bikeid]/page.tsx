@@ -20,13 +20,18 @@ if (!supabaseUrl || !supabaseKey) {
 
 export const revalidate = 0;
 
-export default async function Bike({ params }: { params: { bikeid: string } }) {
+export default async function Bike({
+  params,
+}: {
+  params: Promise<{ bikeid: string }>;
+}) {
+  const { bikeid } = await params;
   const supabase = createClient<Database>(supabaseUrl, supabaseKey);
 
   let { data: bike, error: error } = await supabase
     .from("bike")
     .select("uuid, name, notes, imagepath, part(name, type, uuid, notes)")
-    .eq("uuid", params.bikeid)
+    .eq("uuid", bikeid)
     .single();
 
   if (error || !bike || !bike.uuid) {
@@ -39,18 +44,41 @@ export default async function Bike({ params }: { params: { bikeid: string } }) {
 
   return (
     <>
-      <div className="h-330px fixed -z-10 flex w-full">
+      {/* Background Image - lowest layer */}
+      <div
+        className="fixed left-0 -z-10 w-full overflow-hidden"
+        style={{
+          top: 0,
+          height: "360px",
+          paddingTop: "env(safe-area-inset-top)",
+          marginTop: "calc(-1 * env(safe-area-inset-top))",
+        }}
+      >
         <ImageBackground
           imagepath={bike.imagepath ?? ""}
           alt={"Component Image"}
           prompt="Upload Bike Image"
         />
       </div>
-      <div className="flex h-80">
+
+      {/* Image Upload Overlay - middle layer, clickable - only visible image area */}
+      <div
+        className="fixed left-0 z-10 w-full"
+        style={{
+          top: 0,
+          height: "330px",
+          paddingTop: "env(safe-area-inset-top)",
+          marginTop: "calc(-1 * env(safe-area-inset-top))",
+        }}
+      >
         <ImageUpload id={bike.uuid} isComponent={false} />
       </div>
 
-      <div className="z-20 w-screen border-separate rounded-t-lg border-t border-slate-400 bg-slate-100 pb-28 shadow-lg">
+      {/* Form Card - top layer, starts below image area, blocks clicks when overlapping */}
+      <div
+        className="relative z-20 block w-full max-w-full border-separate rounded-t-lg border-t border-slate-400 bg-slate-100 pb-28 shadow-lg"
+        style={{ marginTop: "330px", minHeight: "fit-content" }}
+      >
         <div className="px-4 pt-6">
           <h2 className="mb-1 px-3 text-lg">Name</h2>
           <BikeName id={bike.uuid} title={bike.name ?? ""} />
